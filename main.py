@@ -340,7 +340,6 @@ results = []
 
 print("\n[4] Training classifiers for Career Level Prediction...")
 
-
 print("\n   [4a] K-Nearest Neighbors")
 
 best_knn, best_knn_f1 = None, 0
@@ -370,8 +369,6 @@ results.append(
         y_test,
     )
 )
-
-
 print("\n   [4b] Decision Tree")
 
 best_dt, best_dt_f1 = None, 0
@@ -406,8 +403,6 @@ results.append(
         y_test,
     )
 )
-
-
 print("\n   [4c] Random Forest")
 
 best_rf, best_rf_f1 = None, 0
@@ -443,7 +438,6 @@ results.append(
         y_test,
     )
 )
-
 
 print("\n   [4d] Neural Network")
 
