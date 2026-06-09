@@ -259,7 +259,9 @@ def remove_leak_words(text):
 
 df["ml_text_clean"] = df["ml_text"].apply(remove_leak_words)
 
-
+# Feature selection / reduction:
+# We use TF-IDF with max_features=300 to reduce the text data
+# to the 300 most important terms and keep the model efficient.  
 tfidf = TfidfVectorizer(
     max_features=300,
     stop_words="english",
