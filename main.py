@@ -497,7 +497,6 @@ results.append(
     )
 )
 
-
 print("\n[5] Results comparison table")
 
 metrics_df = pd.DataFrame([
@@ -505,7 +504,10 @@ metrics_df = pd.DataFrame([
     for r in results
 ])
 
-metrics_df = metrics_df.sort_values("F1-Score", ascending=False).reset_index(drop=True)
+metrics_df = metrics_df.sort_values(
+    "F1-Score",
+    ascending=False
+).reset_index(drop=True)
 
 print(metrics_df.to_string(index=False))
 
@@ -516,20 +518,40 @@ fig, ax = plt.subplots(figsize=(10, 5))
 x = np.arange(len(metrics_df))
 width = 0.2
 
-for i, metric in enumerate(["Accuracy", "Precision", "Recall", "F1-Score"]):
-    ax.bar(x + i * width, metrics_df[metric], width, label=metric)
+for i, metric in enumerate(
+    ["Accuracy", "Precision", "Recall", "F1-Score"]
+):
+    ax.bar(
+        x + i * width,
+        metrics_df[metric],
+        width,
+        label=metric
+    )
 
 ax.set_xticks(x + width * 1.5)
-ax.set_xticklabels(metrics_df["Classifier"], rotation=12, ha="right", fontsize=9)
+ax.set_xticklabels(
+    metrics_df["Classifier"],
+    rotation=12,
+    ha="right"
+)
+
 ax.set_ylim(0, 1.05)
-ax.set_title("Career Level Classifier Performance Comparison")
+ax.set_title(
+    "Career Level Classifier Performance Comparison"
+)
+
 ax.legend()
 
 plt.tight_layout()
-plt.savefig(out("classifier_comparison.png"), dpi=150)
+
+plt.savefig(
+    out("classifier_comparison.png"),
+    dpi=150
+)
+
 plt.close()
 
-print("   Saved: classifier_comparison.png")
+print("Saved: classifier_comparison.png")
 
 fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 axes = axes.flatten()
