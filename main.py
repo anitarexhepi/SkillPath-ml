@@ -553,10 +553,16 @@ plt.close()
 
 print("Saved: classifier_comparison.png")
 
-fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+fig, axes = plt.subplots(
+    2,
+    2,
+    figsize=(14, 10)
+)
+
 axes = axes.flatten()
 
 for i, r in enumerate(results):
+
     sns.heatmap(
         r["cm"],
         annot=True,
@@ -564,7 +570,7 @@ for i, r in enumerate(results):
         cmap="Blues",
         xticklabels=class_names,
         yticklabels=class_names,
-        ax=axes[i],
+        ax=axes[i]
     )
 
     axes[i].set_title(r["Classifier"])
@@ -572,10 +578,15 @@ for i, r in enumerate(results):
     axes[i].set_ylabel("Actual")
 
 plt.tight_layout()
-plt.savefig(out("confusion_matrices.png"), dpi=150)
+
+plt.savefig(
+    out("confusion_matrices.png"),
+    dpi=150
+)
+
 plt.close()
 
-print("   Saved: confusion_matrices.png")
+print("Saved: confusion_matrices.png")
 
 best_result = max(results, key=lambda r: r["F1-Score"])
 
